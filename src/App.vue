@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<post-form @create="createPost" />
-		<post-list :posts="posts" />
+		<post-list :posts="posts" @remove="removePost" />
 	</div>
 </template>
 
@@ -27,6 +27,9 @@ export default {
 		createPost(post) {
 			this.posts.push(post);
 		},
+		removePost(postV) {
+			this.posts = this.posts.filter(post => postV.id !== post.id)
+		}
 	},
 };
 </script>
@@ -39,8 +42,6 @@ export default {
 }
 
 .app {
-	padding: 20px;
+	margin: 20px;
 }
 </style>
-
-//Single file component
